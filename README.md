@@ -1,22 +1,33 @@
 # Kmeans-Clustering Project using C and Python:
+
 This repository contains the implementation of the K-means clustering Algorithm in Both C and Python. 
 
-K-Means performs the division of objects into clusters that share similarities and are dissimilar to the objects belonging to another cluster. 
+
 ## About
+The K-means algorithm is a popular clustering method for finding a partition of N unlabeled
+observations x1, x2, . . . , xN ∈ Rd into K distinct clusters, where K is a parameter of the method.
+Kmeans algorithm is an iterative algorithm that tries to partition the dataset 
+into K distinct non-overlapping subgroups (clusters), where each data point belongs to exactly one cluster.
+Each cluster k is represented by it’s centroid which is the mean µk ∈ Rd of the cluster’s members.
 
-The ```test.c``` file in this repo tests the functions defined in your ```queue.c``` implementation. Most of the test functions were generated using ChatGPT 3.5 and manually fine-tuned to suit the assignment specifications.
-These tests are subject to change in the near future. Please make sure you are working with the most recent version of them. It is not recommended to clone this repo before you are actually ready to carry out the tests.
-**Please note that passing the tests in their current form does not guarantee that your code meets all of the requirements! Similarly, unexpected behavior or failed tests do not necessarily mean that your code does not meet the requirements! These tests are a work in progress.**
-## How to use the automated tests
-1. Clone this repository and copy your ```queue.c``` file into the resulting folder.
-2. Compile your code along with the test file using ```gcc -O3 -D_POSIX_C_SOURCE=200809 -Wall -std=c11 -pthread test.c -o test -g```.
-3. Run ```./test```. 
-4. *Optional*: For more detailed logs, particularly information about threads, install gdb (run ```sudo apt-get update```, then ```sudo apt-get install gdb```). After installing gdb, run ```gdb ./test```, hit the <kbd>Enter</kbd> key, then run your code by typing "run" and hitting the <kbd>Enter</kbd> key again.
-5. Part of the function ```test_edge_cases()``` is commented out. After running the tests without it, comment it in and make sure it block execution (this is the expected behavior). You can, of course, comment it back out if you wish to run the other tests again.
+## Algorithm
+1: Initialize centroids as first k datapoints: µk = xk, ∀k ∈ K
+2: repeat:
+3:   Assign every xi to the closest cluster k: argmin_k d(xi, µk), ∀k 1 ≤ k ≤ K
+4:   Update the centroids: µk = 1/|k|* sumOf(xi : xi∈k )
+5: until convergence: ∆µk < epsilon = 0.001 OR iteration_number = specified MAX_iteration, 
+when ∆µk calculated by Eclidean Distance, between the updated centroid to the previous one, for all centroids.
 
-## Contributing
-These tests are by no means comprehensive. There are definitely edge cases that I haven't thought of or have yet to add tests for. Contributions would be very much appreciated. Feel free to submit a PR or to reach out to me.
-### To-do:
-- Verify correctness of ```test_multiconcurrent_enqueue_dequeue()``` or make adjustments
-- Concurrent random sequences of queue operations
-- Automatically verify correct thread ordering 
+## Requirements
+1. K - number of clusters, 1 < K < N.
+2. MAX_iteration number - 1 < iter < 1000, if not provided, default value is 200.
+3. The datapoints should be provided in a .txt file.
+4.   
+
+## Compile and Running
+# C
+ Compile the code using: ```gcc -ansi -Wall -Wextra -Werror -pedantic-errors kmeans.c -o kmeans```.
+ For example, run: ```./kmeans 3 100 <input_data.txt``` (K = 3, iter = 100).
+
+## Python
+ For example, run: ```python3 kmeans.py 3 100 input_data.txt``` (K = 3, iter = 100).
