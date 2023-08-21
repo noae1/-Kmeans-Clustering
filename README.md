@@ -1,9 +1,9 @@
 # Kmeans-Clustering Project using C and Python:
-
 This repository contains the implementation of the K-means clustering Algorithm in Both C and Python. 
 
 K-Means performs the division of objects into clusters that share similarities and are dissimilar to the objects belonging to another cluster. 
 ## About
+
 The ```test.c``` file in this repo tests the functions defined in your ```queue.c``` implementation. Most of the test functions were generated using ChatGPT 3.5 and manually fine-tuned to suit the assignment specifications.
 These tests are subject to change in the near future. Please make sure you are working with the most recent version of them. It is not recommended to clone this repo before you are actually ready to carry out the tests.
 **Please note that passing the tests in their current form does not guarantee that your code meets all of the requirements! Similarly, unexpected behavior or failed tests do not necessarily mean that your code does not meet the requirements! These tests are a work in progress.**
